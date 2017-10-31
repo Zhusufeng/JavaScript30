@@ -72,17 +72,25 @@
 
       let list = document.getElementsByClassName('key');
 
-      for (let i = 0; i < list.length; i++) {
-        console.log(parseInt(list[i].dataset.key));
-        let currKey = parseInt(list[i].dataset.key)
-        if (currKey === currCharCode) {
-          console.log('hey');
+      let currElement;
 
-          console.log(list[i])
-          list[i].classList.add('playing');
+      for (let i = 0; i < list.length; i++) {
+        // console.log(parseInt(list[i].dataset.key));
+        let currKey = parseInt(list[i].dataset.key);
+        if (currKey === currCharCode) {
+          currElement = list[i];
+          console.log(currElement);
+          currElement.classList.add('playing');
+
+          // get audio element
+          let audioEl = document.querySelector(`audio[data-key="${list[i].dataset.key}"]`)
+          console.log(audioEl);
+          audioEl.play();
           break;
         }
       }
+
+      // currElement.classList.remove('playing');
     });
     // if press on key or click on div with that code
       // get charCode
