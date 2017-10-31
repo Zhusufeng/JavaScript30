@@ -69,6 +69,17 @@
       const currCharCode = keyName.toUpperCase().charCodeAt(0);
 
       console.log(currCharCode);
+
+      const list = document.getElementsByClassName('key');
+
+      for (let i = 0; i < list.length; i++) {
+        console.log(parseInt(list[i].dataset.key));
+        let currKey = parseInt(list[i].dataset.key)
+        if (currKey === currCharCode) {
+          console.log('hey');
+          break;
+        }
+      }
     });
     // if press on key or click on div with that code
       // get charCode
