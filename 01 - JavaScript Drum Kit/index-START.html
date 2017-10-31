@@ -61,51 +61,29 @@
   window.onload = function() {
     console.log('hello, world');
 
-    document.addEventListener('keyup', (event) => {
-      let keyName = event.key;
+    function playSound(event) {
+      console.log(event.keyCode);
 
-      console.log(keyName);
+      // play sound
+      let audioEl = document.querySelector(`audio[data-key="${event.keyCode}"]`);
+      console.log(audioEl);
+      audioEl.currentTime = 0; // rewind to the start each event
+      audioEl.play();
 
-      let currCharCode = keyName.toUpperCase().charCodeAt(0);
+      // animate div
+      let divEl = document.querySelector(`.key[data-key="${event.keyCode}"]`);
+      divEl.classList.add('playing');
+    };
 
-      console.log(currCharCode);
-
-      let list = document.getElementsByClassName('key');
-
-      let currElement;
-
-      for (let i = 0; i < list.length; i++) {
-        // console.log(parseInt(list[i].dataset.key));
-        let currKey = parseInt(list[i].dataset.key);
-        if (currKey === currCharCode) {
-          currElement = list[i];
-          console.log(currElement);
-          currElement.classList.add('playing');
-
-          // get audio element
-          let audioEl = document.querySelector(`audio[data-key="${list[i].dataset.key}"]`);
-          console.log(audioEl);
-          audio.currentTime = 0; // rewind to the start each event
-          audioEl.play();
-          break;
-        }
-      }
-
-      currElement.classList.remove('playing');
-    });
-    function removeTransition(e) {
-      if(e.propertyName !== 'transform') return; // skip if it's not a transform
+    function removeTransition(event) {
+      if(event.propertyName !== 'transform') return; // skip if it's not a transform
       // console.log(this);
       this.classList.remove('playing');
     }
 
     const keys = document.querySelectorAll('.key');
     keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-    // if press on key or click on div with that code
-      // get charCode
-      // if you can find div with charCode of that data-key
-        // use css to highlight that div
-        // play the audio with that data-key
+    document.addEventListener('keyup', playSound);
   }
 </script>
 
