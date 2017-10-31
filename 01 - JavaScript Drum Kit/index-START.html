@@ -58,7 +58,20 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+  window.onload = function() {
+    console.log('hello, world');
 
+    document.addEventListener('keypress', (event) => {
+      const keyName = event.key;
+
+      console.log(keyName);
+    });
+    // if press on key or click on div with that code
+      // get charCode
+      // if you can find div with charCode of that data-key
+        // use css to highlight that div
+        // play the audio with that data-key
+  }
 </script>
 
 
