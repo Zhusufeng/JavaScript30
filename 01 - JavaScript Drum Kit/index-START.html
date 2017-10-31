@@ -83,15 +83,24 @@
           currElement.classList.add('playing');
 
           // get audio element
-          let audioEl = document.querySelector(`audio[data-key="${list[i].dataset.key}"]`)
+          let audioEl = document.querySelector(`audio[data-key="${list[i].dataset.key}"]`);
           console.log(audioEl);
+          audio.currentTime = 0; // rewind to the start each event
           audioEl.play();
           break;
         }
       }
 
-      // currElement.classList.remove('playing');
+      currElement.classList.remove('playing');
     });
+    function removeTransition(e) {
+      if(e.propertyName !== 'transform') return; // skip if it's not a transform
+      // console.log(this);
+      this.classList.remove('playing');
+    }
+
+    const keys = document.querySelectorAll('.key');
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
     // if press on key or click on div with that code
       // get charCode
       // if you can find div with charCode of that data-key
