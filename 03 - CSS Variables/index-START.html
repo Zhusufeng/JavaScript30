@@ -61,6 +61,17 @@
   </style>
 
   <script>
+    // Get inputs so that we can update the CSS variables
+    // querySelectorAll does not get an array but a Node list
+    const inputs = document.querySelectorAll('.controls input');
+
+    function handleUpdate() {
+      console.log(this.value);
+    }
+
+    inputs.forEach(function(input) {
+      input.addEventListener('change', handleUpdate);
+    });
   </script>
 
 </body>
