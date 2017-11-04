@@ -75,10 +75,20 @@
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
+    // let boulevardList = 'https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris'.querySelectorAll('li');
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    let sortedPeople = people.sort((a, b) => {
+
+      if (a > b) {
+        return -1;
+      } else {
+        return 1;
+      }
+    });
+
+    console.log('7. Sort the people alphabetically by last name: ', sortedPeople);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
