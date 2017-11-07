@@ -46,6 +46,7 @@
       justify-content: center;
       align-items: center;
       display: flex; /* nested flexbox. panel is a flex item and flex container*/
+      flex-direction: column; /* vertically centers inside contents */
     }
 
 
@@ -60,6 +61,15 @@
       width: 100%;
       transition:transform 0.5s;
       border: 1px solid red;
+      flex: 1 0 auto; /* these flex items evenly distribute through flex container (vertically) */
+      display: flex; /* make these flex items flex containers as well */
+      justify-content: center; /* center horizontally */
+      align-items: center; /* center vertically */
+    }
+
+    .panel > *:first-child {
+      transform: translateY(-100%); /* this puts first child off screen above */
+      /* if you put on red border, you will see its box is gone! */
     }
 
     .panel p {
