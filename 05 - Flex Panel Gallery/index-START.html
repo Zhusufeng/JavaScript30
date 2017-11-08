@@ -60,7 +60,7 @@
       margin:0;
       width: 100%;
       transition:transform 0.5s;
-      border: 1px solid red;
+      /*border: 1px solid red;*/
       flex: 1 0 auto; /* these flex items evenly distribute through flex container (vertically) */
       display: flex; /* make these flex items flex containers as well */
       justify-content: center; /* center horizontally */
@@ -70,6 +70,16 @@
     .panel > *:first-child {
       transform: translateY(-100%); /* this puts first child off screen above */
       /* if you put on red border, you will see its box is gone! */
+    }
+    .panel.open-active > *:first-child {
+      transform: translateY(0); /* this puts first child back on screen */
+    }
+    .panel > *:last-child {
+      transform: translateY(100%); /* this puts last child off screen below */
+      /* if you put on red border, you will see its box is gone! */
+    }
+    .panel.open-active > *:last-child {
+      transform: translateY(0); /* this puts last child back on screen */
     }
 
     .panel p {
@@ -83,6 +93,7 @@
     }
 
     .panel.open {
+      flex: 5; /* takes 5x of extra room than the rest of them */
       font-size:40px;
     }
 
@@ -118,6 +129,30 @@
   </div>
 
   <script>
+    // Create array of panel nodes
+    const panels = document.querySelectorAll('.panel');
+
+    // Add or subtract the class open from the selected panel node
+    function toggleOpen() {
+      this.classList.toggle('open');
+    }
+
+    // Add or subtract the class open from the selected panel node
+    function toggleActive(e) {
+      // Shows what transitions that ended
+      console.log(e.propertyName);
+
+      // Select the flex transition
+      if (e.propertyName.includes('flex')) {
+        this.classList.toggle('open-active');
+      }
+    }
+
+    // when any panel from the panels array is clicked, run toggleOpen
+    panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+    // listen for end of transition of adding the open class
+    // then add the open-active class to get first and last child of panel
+    panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
 
   </script>
 
