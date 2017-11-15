@@ -18,6 +18,9 @@
   ctx.lineCap = 'round'; // End of line
   ctx.lineWidth = 100;
 
+  // give blend mode
+  ctx.globalCompositeOperation = 'multiply';
+
   let isDrawing = false; // Create flag set to false
   let lastX = 0; // Line start
   let lastY = 0; // Line start
