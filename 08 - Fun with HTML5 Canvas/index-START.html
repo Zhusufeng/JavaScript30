@@ -34,6 +34,12 @@
     // go to
     ctx.lineTo(e.offsetX, e.offsetY); // values come from event
     ctx.stroke();
+
+    // update lastX and lastY to last spot
+    // lastX = e.offsetX;
+    // lastY = e.offsetY;
+    // es6 way - destructure an array
+    [lastX, lastY] = [e.offsetX, e.offsetY];
   }
 
   // listen for mouse move event on canvas
