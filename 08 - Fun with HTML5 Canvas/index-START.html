@@ -13,6 +13,21 @@
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
+  ctx.strokeStyle = '#BADA55'; // Starting color
+  ctx.lineJoin = 'round'; // Start of line
+  ctx.lineCap = 'round'; // End of line
+
+  let isDrawing = false; // Create flag set to false
+  let lastX = 0; // Line start
+  let lastY = 0; // Line start
+
+  function draw(e) {
+    console.log(e);
+  }
+
+  // listen for mouse move event on canvas
+  canvas.addEventListener('mousemove', draw);
+
 </script>
 
 <style>
