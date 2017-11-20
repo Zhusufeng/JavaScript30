@@ -100,12 +100,26 @@
 
 <script>
 
-  // On click, strike thru
   // On shift key down,
     // Save current checked box
     // Wait to hear next click on a checkbox
     // Turn all sibling checkboxes from current checked box to last checkbox with strike thru
     // update current checked box
+var el = document.querySelector('input:checked + p');
+// console.log(event);
+
+el.addEventListener('click', () => {
+  console.log('HEY');
+
+})
+
+document.addEventListener("keydown", function(event) {
+  console.log(event.which);
+
+  if (event.which === 16) {
+    console.log('shift key was used');
+  }
+});
 
 </script>
 </body>
