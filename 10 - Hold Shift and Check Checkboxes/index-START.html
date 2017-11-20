@@ -105,21 +105,33 @@
     // Wait to hear next click on a checkbox
     // Turn all sibling checkboxes from current checked box to last checkbox with strike thru
     // update current checked box
-var el = document.querySelector('input:checked + p');
 // console.log(event);
 
-el.addEventListener('click', () => {
+document.addEventListener('click', () => {
   console.log('HEY');
+
+  var firstEl = document.querySelector('input:checked + p');
+  console.dir(firstEl);
+
+  document.addEventListener("keydown", function(event) {
+    console.log(event.which);
+
+    if (event.which === 16) {
+      console.log('shift key was used');
+      addEventListener('click', () => {
+        console.log('inside shift');
+
+        // if click was an input
+          // capture this element
+        var lastEl = document.querySelector('input:checked + p');
+        console.dir(lastEl);
+          // select all sibling inputs from first input to last input
+      });
+    }
+  });
 
 })
 
-document.addEventListener("keydown", function(event) {
-  console.log(event.which);
-
-  if (event.which === 16) {
-    console.log('shift key was used');
-  }
-});
 
 </script>
 </body>
