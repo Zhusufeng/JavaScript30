@@ -116,8 +116,11 @@ function handleCheck(e) {
   if (e.shiftKey && this.checked) {
     // Loop through siblings
     checkboxes.forEach(checkbox => {
-      console.log(checkbox);
+      // console.log(checkbox);
+
+      // Begin to flag between this and the lastChecked
       if (checkbox === this || checkbox === lastChecked) {
+        // Sets flag to opposite of itself
         inBetween = !inBetween;
         console.log('Starting to check them inbetween!');
       }
@@ -126,40 +129,12 @@ function handleCheck(e) {
         checkbox.checked = true;
       }
     });
-    // Look for 1st one that was checked
-    // Look for last one that was checked
   }
   lastChecked = this;
 }
 
 // Loop over each checkbox and add an eventListener to each
 checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
-
-// document.addEventListener('click', () => {
-//   console.log('HEY');
-
-//   var firstEl = document.querySelector('input:checked + p');
-//   console.dir(firstEl);
-
-//   document.addEventListener("keydown", function(event) {
-//     console.log(event.which);
-
-//     if (event.which === 16) {
-//       console.log('shift key was used');
-//       addEventListener('click', () => {
-//         console.log('inside shift');
-
-//         // if click was an input
-//           // capture this element
-//         var lastEl = document.querySelector('input:checked + p');
-//         console.dir(lastEl);
-//           // select all sibling inputs from first input to last input
-//       });
-//     }
-//   });
-
-// })
-
 
 </script>
 </body>
