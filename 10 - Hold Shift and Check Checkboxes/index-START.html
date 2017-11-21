@@ -107,12 +107,21 @@ const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
 let lastChecked;
 
 function handleCheck(e) {
-  console.log(e);
+  // console.log(e);
+  // Create variable that tracks checkboxes inbetween 1st and last
+  let inBetween = false;
 
   // Check if they had the shift key down
   // AND check that they are checking it
   if (e.shiftKey && this.checked) {
     // Loop through siblings
+    checkboxes.forEach(checkbox => {
+      console.log(checkbox);
+      if (checkbox === this || checkbox === lastChecked) {
+        inBetween = !inBetween;
+        console.log('Starting to check them inbetween!');
+      }
+    });
     // Look for 1st one that was checked
     // Look for last one that was checked
   }
