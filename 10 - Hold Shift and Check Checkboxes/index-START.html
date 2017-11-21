@@ -121,6 +121,10 @@ function handleCheck(e) {
         inBetween = !inBetween;
         console.log('Starting to check them inbetween!');
       }
+
+      if (inBetween) {
+        checkbox.checked = true;
+      }
     });
     // Look for 1st one that was checked
     // Look for last one that was checked
