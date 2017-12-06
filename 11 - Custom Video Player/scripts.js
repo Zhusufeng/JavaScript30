@@ -33,6 +33,8 @@ function skip() {
 
 function handleRangeUpdate() {
   console.log(this.value);
+  console.log(this.name); // volume or playbackRate
+  video[this.name] = this.value;
 }
 
 /* Hook up the event listeners */
@@ -41,4 +43,5 @@ video.addEventListener('play', updateButton);
 video.addEventListener('pause', updateButton);
 toggle.addEventListener('click', togglePlay);
 skipButtons.forEach(button => button.addEventListener('click', skip));
-ranges.forEach(range => range.addEventListener('change', handleRangeUpdate))
+ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
+ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
