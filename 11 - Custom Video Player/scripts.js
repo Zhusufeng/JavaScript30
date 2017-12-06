@@ -67,7 +67,8 @@ ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
 
 let mousedown = false;
 progress.addEventListener('click', scrub);
-// checks if mousedown is true, run scrub func
+// Checks if mousedown is true, run scrub func
+// Allows you to drag across progress bar
 progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
 // progress.addEventListener('mousemove', (e) => {
 //   if (mousedown) {
@@ -76,3 +77,10 @@ progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
 // });
 progress.addEventListener('mousedown', () => mousedown = true);
 progress.addEventListener('mouseup', () => mousedown = false);
+
+/* Create fullscreen functionality */
+/* TO DO */
+// Add button in HTML
+// Select full screen button and save as variable to reference
+// Add event listener when full screen button is clicked and run makeFullScreen
+// makeFullScreen func should change video to take up entire window else it should reduce back to original size
