@@ -32,8 +32,8 @@ function skip() {
 }
 
 function handleRangeUpdate() {
-  console.log(this.value);
-  console.log(this.name); // volume or playbackRate
+  // console.log(this.value);
+  // console.log(this.name); // volume or playbackRate
   video[this.name] = this.value;
 }
 
@@ -46,7 +46,7 @@ function handleProgress() {
 }
 
 function scrub(e) {
-  console.log(e);
+  // console.log(e);
   // When you click on progress bar, this will update video to that time
   const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
   video.currentTime = scrubTime;
@@ -66,3 +66,4 @@ ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
 ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
 
 progress.addEventListener('click', scrub);
+progress.addEventListener('mousemove', scrub);
