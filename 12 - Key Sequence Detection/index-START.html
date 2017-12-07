@@ -16,6 +16,11 @@
 
     // Always keep the latest typed keys in the array
     pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+
+    // Check if user got our secret code
+    if (pressed.join('').includes(secretCode)) {
+      console.log('YOU DID IT! You found the secret code');
+    }
     console.log(pressed);
   });
 </script>
