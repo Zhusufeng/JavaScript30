@@ -13,6 +13,9 @@
   window.addEventListener('keyup', (e) => {
     console.log(e.key);
     pressed.push(e.key);
+
+    // Always keep the latest typed keys in the array
+    pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
     console.log(pressed);
   });
 </script>
