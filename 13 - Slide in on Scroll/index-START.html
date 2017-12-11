@@ -70,9 +70,25 @@
       console.log(window.scrollY);
 
       sliderImages.forEach(slideImage => {
-        // Find out how far down you are on the page
-        const slideInAt = (window.scrollY + window.innerHeight);
+        // Based on how far down we are
+        // And that we've reached 50% of image's height
+        // This gives us where we should start to slide in the image
+        const slideInAt = (window.scrollY + window.innerHeight) - slideImage.height / 2;
         console.log(slideInAt);
+
+        // If we scroll out, it needs to hide itself again
+        // offsetTop tells us top of image from top of window
+        // This gives us the bottom of the image
+        const imageBottom = slideImage.offsetTop + slideImage.height;
+
+        const isHalfShown = slideInAt > slideImage.offsetTop;
+        const isNotScrolledPast = window.scrollY < imageBottom;
+
+        if (isHalfShown && isNotScrolledPast) {
+          slideImage.classList.add('active');
+        } else {
+          slideImage.classList.remove('active');
+        }
       });
     }
 
