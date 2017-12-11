@@ -62,9 +62,21 @@
 
     function checkSlide(e){
       console.log(e);
+      // Loop over each image
+        // Slide image in once 50% of its height is reached and animate
+        // Show image (it is hidden)
+
+      // This is how far up you are
+      console.log(window.scrollY);
+
+      sliderImages.forEach(slideImage => {
+        // Find out how far down you are on the page
+        const slideInAt = (window.scrollY + window.innerHeight);
+        console.log(slideInAt);
+      });
     }
 
-    window.addEventListener('scroll', checkSlide);
+    window.addEventListener('scroll', debounce(checkSlide));
   </script>
 
   <style>
