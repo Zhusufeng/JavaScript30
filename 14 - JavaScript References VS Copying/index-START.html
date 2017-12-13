@@ -115,6 +115,17 @@
 
     console.log(wes.social); // { twitter: '@coolman', facebook: 'wesbos.developer' }
 
+    // Object.assign() does one level deep! The rest will reference the original's object's 
+
+    // Be careful using cloneDeep because very rarely do you need to clone an actual whole object
+
+    // A shortcut can be using JSON
+    const dev2 = JSON.parse(JSON.stringify(wes));
+    console.log(dev2);
+
+    dev2.social.twitter = '@mooman';
+    console.log(wes.social); // { twitter: '@coolman', facebook: 'wesbos.developer' }
+
   </script>
 
 </body>
