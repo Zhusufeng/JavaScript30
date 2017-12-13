@@ -75,12 +75,45 @@
     };
 
     // and think we make a copy:
+    const captain = person;
+    captain.age = 99;
+
+    console.log(person); // { name: 'Wes Bos', age: 99 }
+    console.log(person === captain); // true
 
     // how do we take a copy instead?
+    const cap2 = Object.assign({}, person, { age: 50 }); // Arg 1 = new obj, Arg 2 = obj to copy, Arg 3 = property to overwrite
+    console.log(person); // { name: 'Wes Bos', age: 99 }
+    console.log(cap2); // { name: 'Wes Bos', age: 50 }
 
     // We will hopefully soon see the object ...spread
+    const cap3 = {...person};
+    console.log(cap3); // { name: 'Wes Bos', age: 99 }
 
-    // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    // Things to note - copies go only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    const wes = {
+      name: 'Wes',
+      age: 100,
+      social: {
+        twitter: '@wesbos',
+        facebook: 'wesbos.developer'
+      }
+    }
+    console.clear();
+    console.log(wes);
+
+    const dev = Object.assign({}, wes);
+
+    console.log(dev);
+    dev.name = 'Wesley';
+    console.log(dev);
+
+    console.log(wes); 
+
+    dev.social.twitter = '@coolman';
+    console.log(dev.social); // { twitter: '@coolman', facebook: 'wesbos.developer' }
+
+    console.log(wes.social); // { twitter: '@coolman', facebook: 'wesbos.developer' }
 
   </script>
 
