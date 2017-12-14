@@ -33,7 +33,13 @@
   function addItem(e) {
     // on a submit event, page typically reloads, so prevent it!
     e.preventDefault();
-    console.log(e);
+    // `this` is the specific form!
+    const text = (this.querySelector('[name=item]')).value;
+    const item = {
+      text,
+      done: false
+    };
+    console.log(item);
   }
 
   // submit covers all bases from click and enter!!!
