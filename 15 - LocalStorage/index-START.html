@@ -30,6 +30,14 @@
   const itemsList = document.querySelector('.plates');
   const items = [];
 
+  function addItem(e) {
+    // on a submit event, page typically reloads, so prevent it!
+    e.preventDefault();
+    console.log(e);
+  }
+
+  // submit covers all bases from click and enter!!!
+  addItems.addEventListener('submit', addItem);
 </script>
 
 
