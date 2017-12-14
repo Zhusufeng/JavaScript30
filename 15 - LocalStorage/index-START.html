@@ -39,7 +39,22 @@
       text,
       done: false
     };
-    console.log(item);
+    // console.log(item);
+    items.push(item);
+    populateList(items, itemList);
+    // clear the input
+    this.reset();
+  }
+
+  function populateList(plates = [], platesList){
+    // Generate HTML for each plate to put inside platesList
+    platesList.innerHTML = plates.map((plate, i) => {
+      return `
+        <li>
+          <label for="">${plate.text}</label>
+        </li>
+      `;
+    }).join('');
   }
 
   // submit covers all bases from click and enter!!!
