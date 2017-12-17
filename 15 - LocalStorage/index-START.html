@@ -105,7 +105,12 @@
   }
 
   function clearList() {
-    console.log(items);
+    // Empty localStorage object
+    localStorage.setItem('items', JSON.stringify([]));
+
+    // Visually update the page
+    items.length = 0;
+    populateList(items, itemsList);
   }
 
   // submit covers all bases from click and enter!!!
