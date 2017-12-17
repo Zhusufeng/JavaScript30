@@ -63,6 +63,8 @@
   }
 
   function toggleDone(e) {
+    // skip this unless it's a target (matches is a new browser API)
+    if (!e.target.matches('input')) return;
     console.log(e.target);
   }
 
