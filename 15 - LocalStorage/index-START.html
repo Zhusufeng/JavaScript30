@@ -28,7 +28,7 @@
 <script>
   const addItems = document.querySelector('.add-items');
   const itemsList = document.querySelector('.plates');
-  const items = [];
+  const items = JSON.parse(localStorage.getItem('items')) || [];
 
   function addItem(e) {
     // on a submit event, page typically reloads, so prevent it!
@@ -64,6 +64,7 @@
 
   // submit covers all bases from click and enter!!!
   addItems.addEventListener('submit', addItem);
+  populateList(items, itemsList);
 </script>
 
 
