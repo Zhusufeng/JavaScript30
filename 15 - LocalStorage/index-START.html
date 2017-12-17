@@ -24,6 +24,7 @@
       <input type="submit" value="+ Add Item">
     </form>
     <button id="select-button">Select All</button>
+    <button id="clear-button">Clear All</button>
   </div>
 
 <script>
@@ -36,6 +37,7 @@
     items = JSON.parse(localStorage.getItem('items'));
   }
   const selectBtn = document.querySelector('#select-button');
+  const clearBtn = document.querySelector('#clear-button');
 
   function addItem(e) {
     // on a submit event, page typically reloads, so prevent it!
@@ -90,7 +92,7 @@
   }
 
   function selectBoxes(){
-    
+
     items.forEach(el => {
       el.done = true;
     });
@@ -102,6 +104,10 @@
     populateList(items, itemsList);
   }
 
+  function clearList() {
+    console.log(items);
+  }
+
   // submit covers all bases from click and enter!!!
   addItems.addEventListener('submit', addItem);
 
@@ -109,6 +115,7 @@
   itemsList.addEventListener('click', toggleDone);
 
   selectBtn.addEventListener('click', selectBoxes);
+  clearBtn.addEventListener('click', clearList);
 
   populateList(items, itemsList);
 </script>
