@@ -23,6 +23,7 @@
       <input type="text" name="item" placeholder="Item Name" required>
       <input type="submit" value="+ Add Item">
     </form>
+    <button id="select-button">Select All</button>
   </div>
 
 <script>
@@ -34,7 +35,7 @@
   } else {
     items = JSON.parse(localStorage.getItem('items'));
   }
-  console.log(items);
+  const selectBtn = document.querySelector('#select-button');
 
   function addItem(e) {
     // on a submit event, page typically reloads, so prevent it!
@@ -57,8 +58,6 @@
   }
 
   function populateList(plates = [], platesList){
-    if (!Array.isArray(plates)) return;
-
     // Generate HTML for each plate to put inside platesList
     platesList.innerHTML = plates.map((plate, i) => {
       return `
@@ -90,12 +89,17 @@
     populateList(items, itemsList);
   }
 
+  function selectBoxes(){
+    console.log(itemsList);
+  }
+
   // submit covers all bases from click and enter!!!
   addItems.addEventListener('submit', addItem);
 
   // Parent listens to click on children
   itemsList.addEventListener('click', toggleDone);
 
+  selectBtn.addEventListener('click', selectBoxes);
 
   populateList(items, itemsList);
 </script>
