@@ -90,7 +90,16 @@
   }
 
   function selectBoxes(){
-    console.log(itemsList);
+    
+    items.forEach(el => {
+      el.done = true;
+    });
+
+    // Update localStorage object
+    localStorage.setItem('items', JSON.stringify(items));
+
+    // Visually update the page
+    populateList(items, itemsList);
   }
 
   // submit covers all bases from click and enter!!!
