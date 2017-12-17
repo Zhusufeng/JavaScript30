@@ -65,7 +65,9 @@
   function toggleDone(e) {
     // skip this unless it's a target (matches is a new browser API)
     if (!e.target.matches('input')) return;
-    console.log(e.target);
+    // console.log(e.target);
+    const el = e.target;
+    console.log(el.dataset.index);
   }
 
   // submit covers all bases from click and enter!!!
