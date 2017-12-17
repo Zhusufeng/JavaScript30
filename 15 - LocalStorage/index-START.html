@@ -23,7 +23,7 @@
       <input type="text" name="item" placeholder="Item Name" required>
       <input type="submit" value="+ Add Item">
     </form>
-    <button id="select-button">Select All</button>
+    <button id="select-button">Toggle All</button>
     <button id="clear-button">Clear All</button>
   </div>
 
@@ -38,6 +38,7 @@
   }
   const selectBtn = document.querySelector('#select-button');
   const clearBtn = document.querySelector('#clear-button');
+  let selected = false;
 
   function addItem(e) {
     // on a submit event, page typically reloads, so prevent it!
@@ -91,10 +92,11 @@
     populateList(items, itemsList);
   }
 
-  function selectBoxes(){
+  function toggleChecked(){
+    selected = !selected;
 
     items.forEach(el => {
-      el.done = true;
+      el.done = selected;
     });
 
     // Update localStorage object
@@ -119,7 +121,7 @@
   // Parent listens to click on children
   itemsList.addEventListener('click', toggleDone);
 
-  selectBtn.addEventListener('click', selectBoxes);
+  selectBtn.addEventListener('click', toggleChecked);
   clearBtn.addEventListener('click', clearList);
 
   populateList(items, itemsList);
