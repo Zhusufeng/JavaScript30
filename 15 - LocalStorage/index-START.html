@@ -62,8 +62,17 @@
     }).join('');
   }
 
+  function toggleDone(e) {
+    console.log(e);
+  }
+
   // submit covers all bases from click and enter!!!
   addItems.addEventListener('submit', addItem);
+
+  // Parent listens to click on children
+  itemsList.addEventListener('click', toggleDone);
+
+
   populateList(items, itemsList);
 </script>
 
