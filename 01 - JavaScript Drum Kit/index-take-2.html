@@ -65,6 +65,20 @@
 
   function play(e) {
     console.log(e.keyCode);
+    const code = e.keyCode;
+    const item = document.querySelector(`.key[data-key="${code}"]`);
+    console.log(item);
+    const audioItem = document.querySelector(`audio[data-key="${code}"]`);
+    console.log(audioItem);
+
+    if(item) {
+      // Animate div
+      item.classList.add('playing');
+      // Play audio
+      audioItem.currentTime = 0;
+      audioItem.play();
+    }
+
   }
 
   // Select all keys
