@@ -39,7 +39,12 @@
   const text = hero.querySelector('h1');
 
   function shadow(e) {
-    
+    console.log(e);
+    // const width = hero.offsetWidth;
+    // const height = hero.offsetHeight;
+    // or destructure:
+    const { offsetWidth: width, offsetHeight: height} = hero;
+    // console.log(width, height);
   }
 
   hero.addEventListener('mousemove', shadow);
