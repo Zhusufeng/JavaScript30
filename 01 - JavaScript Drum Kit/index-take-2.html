@@ -60,14 +60,20 @@
 <script>
   function removeTransition(e) {
     console.log(e);
+    this.classList.remove('playing');
   }
+
+  function play(e) {
+    console.log(e.keyCode);
+  }
+
   // Select all keys
   const keys = document.querySelectorAll('.key');
   // console.log(keys);
 
   // Add an event listener to all keys
   keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-
+  document.addEventListener('keyup', play);
 </script>
 
 
