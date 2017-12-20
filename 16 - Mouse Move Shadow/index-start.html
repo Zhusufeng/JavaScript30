@@ -37,6 +37,7 @@
 <script>
   const hero = document.querySelector('.hero');
   const text = hero.querySelector('h1');
+  const walk = 100; // 100px this is for the shadow
 
   function shadow(e) {
     // console.log(e);
@@ -50,13 +51,13 @@
     // Get mouse's position
       // BUT if there are children of hero
       // It will get the offsetX and Y of the mouse to the child
-    const { offsetX: x, offsetY: y} = e;
+    let { offsetX: x, offsetY: y} = e;
 
     // So now we need to normalize it to use hero's position
     // this is what we listen on
     // e.target is what it got triggered on
     // This checks if we are on hero or a child
-    console.log(this, e.target);
+    // console.log(this, e.target);
 
     // If we are on a child, we need to add pixels
     if (this !== e.target) {
@@ -66,7 +67,17 @@
       // Add pixels from top
       y += e.target.offsetTop;
     }
+    // console.log(x, y);
 
+    // if walk is 100, 50 is high and -50 is the low
+    const xWalk = Math.round((x / width * walk) - (walk / 2));
+    const yWalk = Math.round((y / height * walk) - (walk / 2));
+    // console.log(xWalk, yWalk);
+
+    // Adjust shadow based on xWalk and yWalk
+    text.style.textShadow = `
+      ${xWalk}px ${yWalk}px 0 rgba(255,0,255,0.7)
+    `;
   }
 
   hero.addEventListener('mousemove', shadow);
