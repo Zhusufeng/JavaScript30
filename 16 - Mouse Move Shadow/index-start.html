@@ -39,12 +39,34 @@
   const text = hero.querySelector('h1');
 
   function shadow(e) {
-    console.log(e);
+    // console.log(e);
+
+    // Get Hero's position
     // const width = hero.offsetWidth;
     // const height = hero.offsetHeight;
     // or destructure:
     const { offsetWidth: width, offsetHeight: height} = hero;
-    // console.log(width, height);
+
+    // Get mouse's position
+      // BUT if there are children of hero
+      // It will get the offsetX and Y of the mouse to the child
+    const { offsetX: x, offsetY: y} = e;
+
+    // So now we need to normalize it to use hero's position
+    // this is what we listen on
+    // e.target is what it got triggered on
+    // This checks if we are on hero or a child
+    console.log(this, e.target);
+
+    // If we are on a child, we need to add pixels
+    if (this !== e.target) {
+      // Add pixels from left
+      x += e.target.offsetLeft;
+
+      // Add pixels from top
+      y += e.target.offsetTop;
+    }
+
   }
 
   hero.addEventListener('mousemove', shadow);
