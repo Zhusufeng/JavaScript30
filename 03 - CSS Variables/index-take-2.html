@@ -24,9 +24,9 @@
 
     :root {
       --spacing: 10px;
-      --blur: 100px;
+      --blur: 10px;
       --base: #000000;
-    };
+    }
 
     img {
       padding: var(--spacing);
@@ -34,7 +34,7 @@
       filter: blur(var(--blur));
     }
 
-    .h1 {
+    .hl {
       color: var(--base);
     }
     /*
@@ -66,9 +66,9 @@
       const name = el.name;
       const suffix = el.dataset.sizing || '';
       console.log(suffix);
-      // document.querySelector('img').style[name] = '"' + el.value + suffix + '"';
+      // document.querySelector('img').style[name] = el.value + suffix;
 
-      // update entire root
+      // update entire root for img & h1
       document.documentElement.style.setProperty(`--${name}`, el.value + suffix);
     }
 
