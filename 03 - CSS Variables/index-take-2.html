@@ -56,6 +56,18 @@
   </style>
 
   <script>
+    function handleChange(e) {
+      console.log(e);
+      const el = e.target;
+      const name = el.name;
+      const suffix = el.dataset.sizing || '';
+      console.log(suffix);
+      document.querySelector('img').style[name] = '"' + el.value + suffix + '"';
+    }
+
+    const inputs = document.querySelectorAll('.controls input');
+    console.log(inputs);
+    inputs.forEach(input => input.addEventListener('change', handleChange));
   </script>
 
 </body>
