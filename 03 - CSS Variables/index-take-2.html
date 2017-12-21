@@ -62,7 +62,10 @@
       const name = el.name;
       const suffix = el.dataset.sizing || '';
       console.log(suffix);
-      document.querySelector('img').style[name] = '"' + el.value + suffix + '"';
+      // document.querySelector('img').style[name] = '"' + el.value + suffix + '"';
+
+      // update entire root
+      document.documentElement.style.setProperty(`--${name}`, el.value + suffix);
     }
 
     const inputs = document.querySelectorAll('.controls input');
